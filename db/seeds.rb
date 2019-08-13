@@ -22,3 +22,4 @@ category_names =
 category_names.each do |category_name|
   Category.find_or_create_by!(name: category_name)
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
