@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_135753) do
+ActiveRecord::Schema.define(version: 2019_08_13_140158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 2019_08_13_135753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "project_plans", force: :cascade do |t|
+    t.integer "price", null: false
+    t.text "description", null: false
+    t.bigint "project_id", null: false
+    t.date "esitimate_delivery_date", null: false
+    t.boolean "limited_amount", default: false, null: false
+    t.boolean "email_required", default: false, null: false
+    t.boolean "shipping_info_required", default: false, null: false
+    t.boolean "private_comment_required", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_plans_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -52,5 +66,6 @@ ActiveRecord::Schema.define(version: 2019_08_13_135753) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "project_plans", "projects"
   add_foreign_key "projects", "categories"
 end
