@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_price: 1
+  ended_at: 2019-08-13 13:57:53
+  success_condition: 1
+  title: MyString
+  short_blurb: MyText
+  category: one
+  video_url: MyString
+  body: MyText
+
+two:
+  target_price: 1
+  ended_at: 2019-08-13 13:57:53
+  success_condition: 1
+  title: MyString
+  short_blurb: MyText
+  category: two
+  video_url: MyString
+  body: MyText
