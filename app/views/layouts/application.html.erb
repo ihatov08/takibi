@@ -10,8 +10,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'shared/navbar' %>
+    <% flash.each do |type, msg| %>
+      <% flash_type = ((type == 'notice') ? 'success' : 'danger') %>
+      <div class="alert alert-<%= flash_type %>">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
