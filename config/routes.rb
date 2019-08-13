@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
+
+  resources :projects, only: %i[show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

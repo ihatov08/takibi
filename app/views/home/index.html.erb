@@ -12,9 +12,8 @@
                 <p class="card-text"><%= project.short_blurb %></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
+                    <%= link_to "詳細", project, class: "btn btn-sm btn-outline-secondary" %>
                   </div>
-                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
