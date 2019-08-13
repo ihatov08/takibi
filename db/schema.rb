@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_134702) do
+ActiveRecord::Schema.define(version: 2019_08_13_135753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 2019_08_13_134702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "target_price", default: 0, null: false
+    t.datetime "ended_at", null: false
+    t.integer "success_condition", default: 0, null: false
+    t.string "title", null: false
+    t.text "short_blurb", null: false
+    t.bigint "category_id", null: false
+    t.string "video_url"
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_projects_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +52,5 @@ ActiveRecord::Schema.define(version: 2019_08_13_134702) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "categories"
 end
