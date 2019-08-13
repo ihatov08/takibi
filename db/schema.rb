@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2019_08_13_134702) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_categories_on_title", unique: true
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
