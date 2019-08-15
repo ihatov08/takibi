@@ -1,0 +1,2 @@
+class StripeCreditCard < ApplicationRecord
+end
