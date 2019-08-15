@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   }
 
   resources :projects, only: %i[show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :project_plans, only: [] do
+    resources :backers, only: %i[new create]
+  end
 end
