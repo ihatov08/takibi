@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_134954) do
+ActiveRecord::Schema.define(version: 2019_08_15_135541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(version: 2019_08_15_134954) do
     t.index ["user_id"], name: "index_stripe_credit_cards_on_user_id"
   end
 
+  create_table "stripe_customers", force: :cascade do |t|
+    t.string "token", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stripe_customers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -125,4 +133,5 @@ ActiveRecord::Schema.define(version: 2019_08_15_134954) do
   add_foreign_key "project_plans", "projects"
   add_foreign_key "projects", "categories"
   add_foreign_key "stripe_credit_cards", "users"
+  add_foreign_key "stripe_customers", "users"
 end
