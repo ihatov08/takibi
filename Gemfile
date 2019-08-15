@@ -41,6 +41,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'stripe'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
