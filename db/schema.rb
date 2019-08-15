@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_140551) do
+ActiveRecord::Schema.define(version: 2019_08_15_141539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,20 @@ ActiveRecord::Schema.define(version: 2019_08_15_140551) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_prefectures_on_name", unique: true
+  end
+
   create_table "project_plans", force: :cascade do |t|
     t.integer "price", null: false
     t.text "description", null: false
@@ -123,6 +137,19 @@ ActiveRecord::Schema.define(version: 2019_08_15_140551) do
     t.index ["user_id"], name: "index_stripe_customers_on_user_id"
   end
 
+  create_table "user_shipping_addresses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "city_id", null: false
+    t.string "line_1", null: false
+    t.string "line_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_shipping_addresses_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -146,4 +173,5 @@ ActiveRecord::Schema.define(version: 2019_08_15_140551) do
   add_foreign_key "projects", "categories"
   add_foreign_key "stripe_credit_cards", "users"
   add_foreign_key "stripe_customers", "users"
+  add_foreign_key "user_shipping_addresses", "users"
 end
