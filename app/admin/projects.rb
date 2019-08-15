@@ -28,13 +28,13 @@ ActiveAdmin.register Project do
       f.input :body
       f.input :main_image, as: :file
       if f.object.main_image.attached?
-        span image_tag(url_for f.object.main_image)
+        span image_tag(url_for(f.object.main_image.variant(resize:'512x512').processed))
         span link_to "delete", delete_project_image_admin_project_path(f.object.main_image.id), method: :delete, data: { confirm: "Are you sure?" }
       end
       f.input :sub_images, as: :file, input_html: { multiple: true }
       if f.object.sub_images.attached?
         f.object.sub_images.each do |img|
-          span image_tag(img)
+          span image_tag(img.variant(resize:'512x512').processed)
           span link_to "delete",delete_project_image_admin_project_path(img.id),method: :delete,data: { confirm: 'Are you sure?' }
         end
       end

@@ -1,1 +1,13 @@
-show
+title: <%= @project.title %>
+<br>
+target_price: <%= @project.target_price %>
+<br>
+ended_at: <%= @project.ended_at %>
+<br>
+success_condition <%= @project.success_condition %>
+<br>
+video_url <%= @project.video_url %>
+<br>
+body <%= @project.body %>
+<br>
+<%= image_tag(url_for(@project.main_image.variant(resize:'512x512').processed)) %>
